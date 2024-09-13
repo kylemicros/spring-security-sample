@@ -16,24 +16,24 @@ __What you will need:__
 
 ## Installation
 Inside the root directory, open your terminal and run `mvn install`:
-```
-> +mvn install
+```diff
+>+ mvn install
 ```
 Then, run the spring boot app:
 ```
-> + mvn spring-boot:run
+>+ mvn spring-boot:run
 ```
 ### SQL Commands
 > [!IMPORTANT]
 > Before accessing running the command, make sure you have created a database using __pgAdmin__ or access PostgreSQL CLI and run the following command:
-```
-> ! CREATE DATABASE !<db_name>;
+```diff
+>! CREATE DATABASE !<db_name>;
 ```
 Then in pgAdmin or PostgreSQL CLI, run the following SQL statements to insert roles:
-```
-> ! INSERT INTO <db_name>(roles) VALUES('ROLE_USER');
-> ! INSERT INTO <db_name>(roles) VALUES('ROLE_MODERATOR');
-> ! INSERT INTO <db_name>(roles) VALUES('ROLE_ADMIN');
+```diff
+>! INSERT INTO <db_name>(roles) VALUES('ROLE_USER');
+>! INSERT INTO <db_name>(roles) VALUES('ROLE_MODERATOR');
+>! INSERT INTO <db_name>(roles) VALUES('ROLE_ADMIN');
 ```
 
 > [! WARNING]
