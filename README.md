@@ -16,8 +16,8 @@ __What you will need:__
 
 ## Installation
 Inside the root directory, open your terminal and run `mvn install`:
-```diff
-+ mvn install
+```
+<span style="color: orange;">mvn install</span>
 ```
 Then, run the spring boot app:
 ```
