@@ -25,7 +25,7 @@ Then, run the spring boot app:
 ```
 ### SQL Commands
 > [!IMPORTANT]
-> Before accessing running the command, make sure you have created a database using __pgAdmin__ or access PostgreSQL CLI and run the following command:
+> Before running the command, make sure you have created a database using __pgAdmin__ or access PostgreSQL CLI and run the following command:
 ```
  CREATE DATABASE <db_name>;
 ```
