@@ -1,6 +1,6 @@
 # Spring Security + JWT (Spring 6.0)
 This is the final implementation of Spring Security + JSON Web Tokens (JWT) for authorization and authentication. This will be used as an __integration__ for future projects, and to be configured accordingly based on the requirements.
-> [! NOTE]
+> [!NOTE]
 > If you plan on upgrading JDK version, check the [official documentation](https://spring.io/) for changes in the configurations.
 ### Task
 - [x] Spring Security 6.0
@@ -9,31 +9,31 @@ This is the final implementation of Spring Security + JSON Web Tokens (JWT) for 
 - [ ] OAuth / Auth 2.0
 ## Setup Guide
 __What you will need:__
-+ Apache Maven 3.9.8 or higher ([Apache Maven](https://maven.apache.org/))
-+ JDK 17 or higher ([Java](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html))
-+ PostgreSQL 14 or higher ([PostgreSQL](https://www.postgresql.org/download/))
++ __Apache Maven__ 3.9.8 or higher ([Apache Maven](https://maven.apache.org/))
++ __JDK__ 17 or higher ([Java](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html))
++ __PostgreSQL__ 14 or higher ([PostgreSQL](https://www.postgresql.org/download/))
 + An IDE of your choice (e.g., VSCode, Vim, NVim, etc.)
 
 ## Installation
 Inside the root directory, open your terminal and run `mvn install`:
 ```
-> mvn install
+> +mvn install
 ```
 Then, run the spring boot app:
 ```
-> mvn spring-boot:run
+> + mvn spring-boot:run
 ```
 ### SQL Commands
-> [! IMPORTANT]
-> Before accessing running the command, make sure you have created a database using __pgAdmin__ or access ![PostgreSQL Icon](https://img.icons8.com/color/48/postgreesql.png) PostgreSQL CLI and run the following command:
+> [!IMPORTANT]
+> Before accessing running the command, make sure you have created a database using __pgAdmin__ or access PostgreSQL CLI and run the following command:
 ```
-> CREATE DATABASE <db_name>;
+> ! CREATE DATABASE !<db_name>;
 ```
 Then in pgAdmin or PostgreSQL CLI, run the following SQL statements to insert roles:
 ```
-> INSERT INTO <db_name>(roles) VALUES('ROLE_USER');
-> INSERT INTO <db_name>(roles) VALUES('ROLE_MODERATOR');
-> INSERT INTO <db_name>(roles) VALUES('ROLE_ADMIN');
+> ! INSERT INTO <db_name>(roles) VALUES('ROLE_USER');
+> ! INSERT INTO <db_name>(roles) VALUES('ROLE_MODERATOR');
+> ! INSERT INTO <db_name>(roles) VALUES('ROLE_ADMIN');
 ```
 
 > [! WARNING]
