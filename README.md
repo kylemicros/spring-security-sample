@@ -36,6 +36,6 @@ Then in pgAdmin or PostgreSQL CLI, run the following SQL statements to insert ro
 > INSERT INTO <db_name>(roles) VALUES('ROLE_ADMIN');
 ```
 
-> [! WARNING]
+> [!WARNING]
 > This application is subject to change as this will be adapted for future changes (e.g., upgrading to a higher Spring Boot, Spring, JDK, and/or Maven versions)
 In addition, this project aims to simplify the development of future projects that will utilize Spring Security and JWT. Thus, reducing the development time and focus more on the features of the project and other implementations and/or integrations.
