@@ -13,7 +13,6 @@ __What you will need:__
 + __JDK__ 17 or higher ([Java](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html))
 + __PostgreSQL__ 14 or higher ([PostgreSQL](https://www.postgresql.org/download/))
 + An IDE of your choice (e.g., VSCode, Vim, NVim, etc.)
-
 ## Installation
 Inside the root directory, open your terminal and run `mvn install`:
 ```
@@ -35,7 +34,10 @@ Then in pgAdmin or PostgreSQL CLI, run the following SQL statements to insert ro
  INSERT INTO <db_name>(roles) VALUES('ROLE_MODERATOR');
  INSERT INTO <db_name>(roles) VALUES('ROLE_ADMIN');
 ```
-
 > [!WARNING]
 > This application is subject to change as this will be adapted for future changes (e.g., upgrading to a higher Spring Boot, Spring, JDK, and/or Maven versions)
 In addition, this project aims to simplify the development of future projects that will utilize Spring Security and JWT. Thus, reducing the development time and focus more on the features of the project and other implementations and/or integrations.
+## References
+### Spring Security
+__Spring Security 6.0 + JWT:__ https://youtu.be/oeni_9g7too?si=AT1sZfLET5rT4WDr
+__JWT Refresh Tokens:__ https://youtu.be/nvwKwsJg89E?si=tCDaiM52XnEHaeMu
