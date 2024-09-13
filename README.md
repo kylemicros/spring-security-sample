@@ -39,5 +39,5 @@ Then in pgAdmin or PostgreSQL CLI, run the following SQL statements to insert ro
 In addition, this project aims to simplify the development of future projects that will utilize Spring Security and JWT. Thus, reducing the development time and focus more on the features of the project and other implementations and/or integrations.
 ## References
 ### Spring Security
-__Spring Security 6.0 + JWT:__ https://youtu.be/oeni_9g7too?si=AT1sZfLET5rT4WDr
-__JWT Refresh Tokens:__ https://youtu.be/nvwKwsJg89E?si=tCDaiM52XnEHaeMu
+- __Spring Security 6.0 + JWT:__ https://youtu.be/oeni_9g7too?si=AT1sZfLET5rT4WDr
+- __JWT Refresh Tokens:__ https://youtu.be/nvwKwsJg89E?si=tCDaiM52XnEHaeMu
