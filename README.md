@@ -27,7 +27,7 @@ Then, run the spring boot app:
 > [!IMPORTANT]
 > Before accessing running the command, make sure you have created a database using __pgAdmin__ or access PostgreSQL CLI and run the following command:
 ```
-> CREATE DATABASE !<db_name>;
+> CREATE DATABASE <db_name>;
 ```
 Then in pgAdmin or PostgreSQL CLI, run the following SQL statements to insert roles:
 ```
