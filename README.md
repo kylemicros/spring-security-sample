@@ -3,13 +3,25 @@
 This is the final implementation of Spring Security + JSON Web Tokens (JWT) for authorization and authentication. This will be used as an __integration__ for future projects, and to be configured accordingly based on the requirements.
 > [!NOTE]
 > If you plan on upgrading JDK version, check the [official documentation](https://spring.io/) for changes in the configurations.
-### Task
+## TODO LIST
+### Main Task
 - [x] Spring Security 6.0
-- [x] JWT
-- [x] Refresh Tokens
+- [x] JWT (Access / Refresh Tokens)
 - [ ] OAuth / Auth 2.0
 - [ ] Dockerize
 - [ ] K8s (Kubernetes)
+### Security Task
+- [ ] HTTPS (SSL/TLS Certificate)
+- [ ] HashiCorp Vault (For secrets management)
+- [ ] Lease Privilege
+- [ ] Input Validation
+- [ ] Rate Limiting
+- [ ] OWASP Dependency-Check
+- [ ] Vulnerability Prevention (e.g., XSS Attack Prevention)
+### Misc.
+- [ ] Flyway (Version control for database schema)
+- [ ] Swagger (OpenAPI)
+- [ ] And More...
 ## Setup Guide
 __What you will need:__
 + __Apache Maven__ 3.9.8 or higher ([Apache Maven](https://maven.apache.org/))
