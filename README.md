@@ -7,7 +7,7 @@ This is the final implementation of Spring Security + JSON Web Tokens (JWT) for 
 - [x] JWT
 - [x] Refresh Tokens
 - [ ] OAuth / Auth 2.0
-- [ ] <img src="https://camo.githubusercontent.com/f882b01a3323c3f5890a8423da9adb40ddfefaed5da89bea7421b2e8a549183f/68747470733a2f2f6564656e742e6769746875622e696f2f537570657254696e7949636f6e732f696d616765732f7376672f646f636b65722e737667" width="8" height="8"> Dockerize
+- [ ] <img src="https://static-00.iconduck.com/assets.00/docker-icon-icon-2048x1479-cres2he9.png" width="24" height="24"> Dockerize
 - [ ] K8s (Kubernetes)
 ## Setup Guide
 __What you will need:__
