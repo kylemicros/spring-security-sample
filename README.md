@@ -14,6 +14,7 @@ __What you will need:__
 + __PostgreSQL__ 14 or higher ([PostgreSQL](https://www.postgresql.org/download/))
 + An IDE of your choice (e.g., VSCode, Vim, NVim, etc.)
 ## Installation
+### Setting up Environment Variables
 Inside the root directory, create a .env file and write and save the following:
 ``` text
 DB_USERNAME=
@@ -29,8 +30,6 @@ Set the values accordingly. If you have node installed, run the command below to
 node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 ```
 ### SQL Commands
-> [!IMPORTANT]
-> Before running the app, make sure you have created a database using __pgAdmin__ or access PostgreSQL CLI and run the following command:
 ``` sql
  CREATE DATABASE <db_name>;
 ```
@@ -40,6 +39,9 @@ Then in pgAdmin or PostgreSQL CLI, run the following SQL statements to insert ro
  INSERT INTO <db_name>(roles) VALUES('ROLE_MODERATOR');
  INSERT INTO <db_name>(roles) VALUES('ROLE_ADMIN');
 ```
+### Maven
+> [!IMPORTANT]
+> Before running the app, make sure you have created a database using __pgAdmin__ or access PostgreSQL CLI and run the following command:
 Open your terminal and run `mvn install`:
 ``` sh
  mvn install
