@@ -1,8 +1,8 @@
-<p align="center">
+<div align="center">
   <a href="https://skillicons.dev">
     <img src="https://skillicons.dev/icons?i=maven,java,spring,postgres,kubernetes,docker" />
   </a>
-</p>
+</div>
 # Spring Security + JWT (Spring 6.0)
 This is the final implementation of Spring Security + JSON Web Tokens (JWT) for authorization and authentication. This will be used as an __integration__ for future projects, and to be configured accordingly based on the requirements.
 > [!NOTE]
