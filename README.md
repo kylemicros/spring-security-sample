@@ -1,4 +1,15 @@
 # Spring Security + JWT (Spring 6.0)
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=maven,java,spring,postgres,kubernetes,docker" />
+  </a>
+</p>
+<div style="display: inline-block; padding: 5px 10px; border-radius: 12px; background-color: #4CAF50; color: white; font-weight: bold;">
+  Online
+</div>
+<div style="display: inline-block; padding: 5px 10px; border-radius: 12px; background-color: #2196F3; color: white; font-weight: bold;">
+  Offline
+</div>
 This is the final implementation of Spring Security + JSON Web Tokens (JWT) for authorization and authentication. This will be used as an __integration__ for future projects, and to be configured accordingly based on the requirements.
 > [!NOTE]
 > If you plan on upgrading JDK version, check the [official documentation](https://spring.io/) for changes in the configurations.
@@ -7,7 +18,7 @@ This is the final implementation of Spring Security + JSON Web Tokens (JWT) for 
 - [x] JWT
 - [x] Refresh Tokens
 - [ ] OAuth / Auth 2.0
-- [ ] <img src="https://skillicons.dev/icons?i=docker" width=18 /> Dockerize
+- [ ] Dockerize
 - [ ] K8s (Kubernetes)
 ## Setup Guide
 __What you will need:__
@@ -52,6 +63,7 @@ Then, run the spring boot app:
 ``` sh
  mvn spring-boot:run
 ```
+That's it! Now, test the API endpoints on any API testing software such as Postman.
 > [!WARNING]
 > This application is subject to change as this will be adapted for future changes (e.g., upgrading to a higher Spring Boot, Spring, JDK, and/or Maven versions)
 In addition, this project aims to simplify the development of future projects that will utilize Spring Security and JWT. Thus, reducing the development time and focus more on the features of the project and other implementations and/or integrations.
