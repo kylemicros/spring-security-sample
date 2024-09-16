@@ -7,6 +7,8 @@ This is the final implementation of Spring Security + JSON Web Tokens (JWT) for 
 - [x] JWT
 - [x] Refresh Tokens
 - [ ] OAuth / Auth 2.0
+- [ ] Dockerize
+- [ ] K8s (Kubernetes)
 ## Setup Guide
 __What you will need:__
 + __Apache Maven__ 3.9.8 or higher ([Apache Maven](https://maven.apache.org/))
