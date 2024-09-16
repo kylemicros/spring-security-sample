@@ -15,7 +15,7 @@ target/
 
 ### .env ###
 .env
-
+..env.swp
 ### IntelliJ IDEA ###
 .idea
 *.iws
