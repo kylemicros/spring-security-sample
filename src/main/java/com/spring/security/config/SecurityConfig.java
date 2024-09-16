@@ -7,8 +7,9 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+//import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -19,10 +20,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.spring.security.config.jwt.AuthEntryPointJwt;
 import com.spring.security.config.jwt.AuthTokenFilter;
 
-import static org.springframework.security.config.Customizer.withDefaults;
-
 @Configuration
-@EnableWebSecurity
+// @EnableWebSecurity
+@EnableMethodSecurity
 public class SecurityConfig {
 
 	@Autowired
@@ -52,21 +52,19 @@ public class SecurityConfig {
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		return http
-				.csrf((csrf) -> csrf.ignoringRequestMatchers("/api/auth/**"))
+		http
+				.csrf((csrf) -> csrf.disable())
 				.authorizeHttpRequests((authz) -> authz
-						.requestMatchers("/api/user/**").permitAll()
+						.requestMatchers("/api/test/**").permitAll()
 						.requestMatchers("/api/auth/**").permitAll()
 						.anyRequest().authenticated())
 				.sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-				.httpBasic(withDefaults())
-				.logout((logout) -> logout
-						.logoutUrl("/logout")
-						.logoutSuccessUrl("/login?logout"))
 				.exceptionHandling((exc) -> exc
-						.authenticationEntryPoint(entryPointJwt))
-				.addFilterBefore(authTokenFilter(), UsernamePasswordAuthenticationFilter.class)
-				.build();
+						.authenticationEntryPoint(entryPointJwt));
+		http.authenticationProvider(authenticationProvider());
+		http.addFilterBefore(authTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+
+		return http.build();
 	}
 
 	@Bean
