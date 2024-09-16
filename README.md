@@ -12,7 +12,7 @@ __What you will need:__
 + __Apache Maven__ 3.9.8 or higher ([Apache Maven](https://maven.apache.org/))
 + __JDK__ 17 or higher ([Java](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html))
 + __PostgreSQL__ 14 or higher ([PostgreSQL](https://www.postgresql.org/download/))
-+ An IDE of your choice (e.g., VSCode, Vim, NVim, etc.)
++ An IDE of your choice (e.g., [VSCode](https://code.visualstudio.com/download), [Vim](https://www.vim.org/download.php), [NVim](https://neovim.io/), etc.)
 ## Installation
 ### Setting up Environment Variables
 Inside the root directory, create a .env file and write and save the following:
