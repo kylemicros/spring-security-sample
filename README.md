@@ -15,7 +15,7 @@ __What you will need:__
 + An IDE of your choice (e.g., VSCode, Vim, NVim, etc.)
 ## Installation
 Inside the root directory, create a .env file and write and save the following:
-```
+``` text
 DB_USERNAME=
 DB_PASSWORD=
 JWT_KEY=YOUR_KEY_HERE
@@ -25,7 +25,7 @@ REFRESH_COOKIE=
 REFRESH_TOKEN_EXPIRATION=
 ```
 Set the values accordingly. If you have node installed, run the command below to generate a random string and paste it in the JWT_KEY in the .env file:
-``` bash
+``` sh
 node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 ```
 ### SQL Commands
@@ -41,11 +41,11 @@ Then in pgAdmin or PostgreSQL CLI, run the following SQL statements to insert ro
  INSERT INTO <db_name>(roles) VALUES('ROLE_ADMIN');
 ```
 Open your terminal and run `mvn install`:
-```
+``` sh
  mvn install
 ```
 Then, run the spring boot app:
-```
+``` sh
  mvn spring-boot:run
 ```
 > [!WARNING]
