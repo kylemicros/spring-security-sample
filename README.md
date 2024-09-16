@@ -1,15 +1,9 @@
-# Spring Security + JWT (Spring 6.0)
 <p align="center">
   <a href="https://skillicons.dev">
     <img src="https://skillicons.dev/icons?i=maven,java,spring,postgres,kubernetes,docker" />
   </a>
 </p>
-<div style="display: inline-block; padding: 5px 10px; border-radius: 12px; background-color: #4CAF50; color: white; font-weight: bold;">
-  Online
-</div>
-<div style="display: inline-block; padding: 5px 10px; border-radius: 12px; background-color: #2196F3; color: white; font-weight: bold;">
-  Offline
-</div>
+# Spring Security + JWT (Spring 6.0)
 This is the final implementation of Spring Security + JSON Web Tokens (JWT) for authorization and authentication. This will be used as an __integration__ for future projects, and to be configured accordingly based on the requirements.
 > [!NOTE]
 > If you plan on upgrading JDK version, check the [official documentation](https://spring.io/) for changes in the configurations.
