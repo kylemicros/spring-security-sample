@@ -25,17 +25,17 @@ REFRESH_COOKIE=
 REFRESH_TOKEN_EXPIRATION=
 ```
 Set the values accordingly. If you have node installed, run the command below to generate a random string and paste it in the JWT_KEY in the .env file:
-```
+``` bash
 node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 ```
 ### SQL Commands
 > [!IMPORTANT]
 > Before running the app, make sure you have created a database using __pgAdmin__ or access PostgreSQL CLI and run the following command:
-```
+``` sql
  CREATE DATABASE <db_name>;
 ```
 Then in pgAdmin or PostgreSQL CLI, run the following SQL statements to insert roles:
-```
+``` sql
  INSERT INTO <db_name>(roles) VALUES('ROLE_USER');
  INSERT INTO <db_name>(roles) VALUES('ROLE_MODERATOR');
  INSERT INTO <db_name>(roles) VALUES('ROLE_ADMIN');
