@@ -14,17 +14,23 @@ __What you will need:__
 + __PostgreSQL__ 14 or higher ([PostgreSQL](https://www.postgresql.org/download/))
 + An IDE of your choice (e.g., VSCode, Vim, NVim, etc.)
 ## Installation
-Inside the root directory, open your terminal and run `mvn install`:
+Inside the root directory, create a .env file and write and save the following:
 ```
- mvn install
+DB_USERNAME=
+DB_PASSWORD=
+JWT_KEY=YOUR_KEY_HERE
+JWT_EXPIRATION=
+COOKIE=
+REFRESH_COOKIE=
+REFRESH_TOKEN_EXPIRATION=
 ```
-Then, run the spring boot app:
+Set the values accordingly. If you have node installed, run the command below to generate a random string and paste it in the JWT_KEY in the .env file:
 ```
- mvn spring-boot:run
+node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 ```
 ### SQL Commands
 > [!IMPORTANT]
-> Before running the command, make sure you have created a database using __pgAdmin__ or access PostgreSQL CLI and run the following command:
+> Before running the app, make sure you have created a database using __pgAdmin__ or access PostgreSQL CLI and run the following command:
 ```
  CREATE DATABASE <db_name>;
 ```
@@ -33,6 +39,14 @@ Then in pgAdmin or PostgreSQL CLI, run the following SQL statements to insert ro
  INSERT INTO <db_name>(roles) VALUES('ROLE_USER');
  INSERT INTO <db_name>(roles) VALUES('ROLE_MODERATOR');
  INSERT INTO <db_name>(roles) VALUES('ROLE_ADMIN');
+```
+Open your terminal and run `mvn install`:
+```
+ mvn install
+```
+Then, run the spring boot app:
+```
+ mvn spring-boot:run
 ```
 > [!WARNING]
 > This application is subject to change as this will be adapted for future changes (e.g., upgrading to a higher Spring Boot, Spring, JDK, and/or Maven versions)
