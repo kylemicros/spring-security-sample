@@ -5,7 +5,7 @@ This is the final implementation of Spring Security + JSON Web Tokens (JWT) for 
 ### Task
 - [x] Spring Security 6.0
 - [x] JWT
-- [ ] Refresh Tokens
+- [x] Refresh Tokens
 - [ ] OAuth / Auth 2.0
 ## Setup Guide
 __What you will need:__
