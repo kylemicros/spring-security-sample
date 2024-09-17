@@ -44,6 +44,8 @@ JWT_EXPIRATION=
 COOKIE=
 REFRESH_COOKIE=
 REFRESH_TOKEN_EXPIRATION=
+DB_NAME=
+DB_PORT=
 ```
 Set the values accordingly. If you have node installed, run the command below to generate a random string and paste it in the JWT_KEY in the .env file:
 ``` sh
