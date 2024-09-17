@@ -1,20 +1,20 @@
 package com.spring.security.controller;
 
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/api/test")
 public class TestController {
+	// For penetration testing ==> XSS Attacks
 	@GetMapping("/all")
-	public String allAccess() {
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		return principal.toString();
+	public String allAccess(@RequestParam String param) {
+		return param;
 	}
 
 	@GetMapping("/user")
