@@ -19,10 +19,10 @@ This is the final implementation of Spring Security + JSON Web Tokens (JWT) for 
 - [ ] HTTPS (SSL/TLS Certificate)
 - [ ] HashiCorp Vault (For secrets management)
 - [ ] Lease Privilege
-- [ ] Input Validation
+- [x] Input Validation
 - [ ] Rate Limiting
 - [ ] OWASP Dependency-Check
-- [ ] Vulnerability Prevention (e.g., XSS Attack Prevention)
+- [x] Vulnerability Prevention (e.g., XSS Attack Prevention)
 ### Misc.
 - [ ] Flyway (Version control for database schema)
 - [ ] Swagger (OpenAPI)
