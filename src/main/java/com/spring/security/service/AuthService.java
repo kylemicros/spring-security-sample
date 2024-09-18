@@ -1,5 +1,7 @@
 package com.spring.security.service;
 
+import java.time.LocalDateTime;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,15 +10,19 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.spring.security.config.jwt.JwtUtil;
 import com.spring.security.config.service.RefreshTokenService;
 import com.spring.security.config.service.UserPrincipal;
+import com.spring.security.dto.ChangePasswordRequestDto;
+import com.spring.security.dto.ChangeUsernameRequestDto;
 import com.spring.security.dto.LoginRequestDto;
 import com.spring.security.dto.SignupRequestDto;
 import com.spring.security.dto.response.MessageResponseDto;
@@ -144,4 +150,152 @@ public class AuthService {
 
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Refresh token is empty.");
 	}
+
+	public ResponseEntity<?> updateUsername(ChangeUsernameRequestDto request) {
+		// Check who is authenticated currently
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+		if (auth == null || !auth.isAuthenticated() || auth.getPrincipal().toString().equals("anonymousUser")) {
+			return ResponseEntity.status(HttpStatus.FORBIDDEN)
+					.body(new BadCredentialsException("Only logged in users are allowed in this resource"));
+		}
+
+		UserPrincipal principal = (UserPrincipal) auth.getPrincipal();
+
+		User user = userRepository.findByUsername(principal.getUsername())
+				.orElseThrow(() -> new UsernameNotFoundException("Username does not exists."));
+
+		user.setUsername(request.newUsername());
+		user.setDateUpdated(LocalDateTime.now());
+
+		userRepository.save(user);
+
+		// re-authenticate the user
+		auth = authenticationManager.authenticate(
+				new UsernamePasswordAuthenticationToken(
+						request.newUsername(),
+						request.password()));
+
+		SecurityContextHolder.getContext().setAuthentication(auth);
+
+		UserPrincipal newPrincipal = (UserPrincipal) auth.getPrincipal();
+		Long id = newPrincipal.getId();
+
+		refreshTokenService.deleteByUserId(id);
+
+		ResponseCookie jwtCookie = jwtUtil.generateJwtCookie(newPrincipal);
+		Token refreshToken = refreshTokenService.createRefreshToken(id);
+		ResponseCookie jwtRefreshCookie = jwtUtil.generateRefreshJwtCookie(refreshToken.getToken());
+
+		return ResponseEntity.status(HttpStatus.OK)
+				.header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
+				.header(HttpHeaders.SET_COOKIE, jwtRefreshCookie.toString())
+				.body(new MessageResponseDto("Successfully changed username."));
+	}
+
+	public ResponseEntity<?> changePassword(ChangePasswordRequestDto request) {
+		try {
+			UserPrincipal principal = (UserPrincipal) SecurityContextHolder.getContext().getAuthentication()
+					.getPrincipal();
+
+			Authentication auth = authenticationManager.authenticate(
+					new UsernamePasswordAuthenticationToken(
+							principal.getUsername(),
+							request.currentPassword()));
+
+			if (auth == null || !auth.isAuthenticated() || auth.getPrincipal().toString().equals("anonymousUser")) {
+				return ResponseEntity.status(HttpStatus.FORBIDDEN)
+						.body(new BadCredentialsException("Incorrect password."));
+			}
+
+			// UserPrincipal principal = (UserPrincipal) auth.getPrincipal();
+
+			User user = userRepository.findByUsername(principal.getUsername()).orElseThrow(
+					() -> new UsernameNotFoundException("Username does not exists."));
+
+			user.setPassword(encoder.encode(request.newPassword()));
+			user.setDateUpdated(LocalDateTime.now());
+
+			userRepository.save(user);
+
+			auth = authenticationManager.authenticate(
+					new UsernamePasswordAuthenticationToken(
+							principal.getUsername(),
+							request.newPassword()));
+
+			SecurityContextHolder.getContext().setAuthentication(auth);
+
+			UserPrincipal newPrincipal = (UserPrincipal) auth.getPrincipal();
+			Long id = newPrincipal.getId();
+
+			refreshTokenService.deleteByUserId(principal.getId());
+
+			ResponseCookie jwtCookie = jwtUtil.generateJwtCookie(newPrincipal);
+			Token refreshToken = refreshTokenService.createRefreshToken(id);
+			ResponseCookie jwtRefreshCookie = jwtUtil.generateRefreshJwtCookie(refreshToken.getToken());
+
+			return ResponseEntity.status(HttpStatus.OK)
+					.header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
+					.header(HttpHeaders.SET_COOKIE, jwtRefreshCookie.toString())
+					.body(new MessageResponseDto("Successfully changed password."));
+
+		} catch (Exception exc) {
+			logger.info("There was an error changing the password: ", exc.getMessage());
+
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(
+					new MessageResponseDto("There was a problem processing your requests."));
+		}
+	}
+	// public ResponseEntity<?> updateUsername(ChangeUsernameRequestDto
+	// changeUsernameRequestDto) {
+	// Object principal =
+	// SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	//
+	// if (principal.toString().equals("anonymousUser")) {
+	// return ResponseEntity.status(HttpStatus.FORBIDDEN)
+	// .body(new MessageResponseDto("Only logged in users are allowed in this
+	// resource."));
+	// }
+	//
+	// User user = userRepository.findByUsername(((UserPrincipal)
+	// principal).getUsername()).orElseThrow(
+	// () -> new UsernameNotFoundException("Username does not exists."));
+	//
+	// user.setUsername(changeUsernameRequestDto.newUsername());
+	// user.setDateUpdated(LocalDateTime.now());
+	//
+	// userRepository.save(user);
+	//
+	// UserPrincipal updatedUserPrincipal = new UserPrincipal(
+	// user.getId(),
+	// user.getUsername(),
+	// user.getEmail(),
+	// user.getPassword(),
+	// user.getRoles().stream()
+	// .map((role) -> new SimpleGrantedAuthority(role.getRoles().name()))
+	// .collect(Collectors.toList()));
+	//
+	// Authentication authentication = new UsernamePasswordAuthenticationToken(
+	// updatedUserPrincipal,
+	// null,
+	// updatedUserPrincipal.getAuthorities());
+	//
+	// SecurityContextHolder.getContext().setAuthentication(authentication);
+	//
+	// Long id = ((UserPrincipal) principal).getId();
+	// refreshTokenService.deleteByUserId(id);
+	//
+	// ResponseCookie jwtCookie = jwtUtil.generateJwtCookie(updatedUserPrincipal);
+	// Token refreshToken =
+	// refreshTokenService.createRefreshToken(updatedUserPrincipal.getId());
+	// ResponseCookie jwtRefreshCookie =
+	// jwtUtil.generateRefreshJwtCookie(refreshToken.getToken());
+	//
+	// // String jwt = jwtUtil.generateToken(authentication);
+	//
+	// return ResponseEntity.status(HttpStatus.OK)
+	// .header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
+	// .header(HttpHeaders.SET_COOKIE, jwtRefreshCookie.toString())
+	// .body(new MessageResponseDto("Successfully logged in."));
+	// }
 }
