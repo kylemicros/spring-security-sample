@@ -75,6 +75,7 @@ public class AuthService {
 
 		User user = authServiceMapper.mapSignupToUser(signupRequestDto);
 		user.setPassword(encoder.encode(signupRequestDto.password()));
+		user.setCooldownPeriod(LocalDateTime.now());
 
 		userRepository.save(user);
 
@@ -165,8 +166,14 @@ public class AuthService {
 		User user = userRepository.findByUsername(principal.getUsername())
 				.orElseThrow(() -> new UsernameNotFoundException("Username does not exists."));
 
+		if (user.getCooldownPeriod() != null && LocalDateTime.now().isBefore(user.getCooldownPeriod())) {
+			return ResponseEntity.status(HttpStatus.FORBIDDEN).body(
+					new MessageResponseDto("Cannot change username at the moment."));
+		}
+
 		user.setUsername(request.newUsername());
 		user.setDateUpdated(LocalDateTime.now());
+		user.setCooldownPeriod(LocalDateTime.now().plusDays(30));
 
 		userRepository.save(user);
 

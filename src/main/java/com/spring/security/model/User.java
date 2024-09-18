@@ -1,5 +1,6 @@
 package com.spring.security.model;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Set;
 
@@ -64,6 +65,9 @@ public class User {
 	@Column(name = "date_updated")
 	@UpdateTimestamp
 	private LocalDateTime dateUpdated;
+
+	@Column(name = "cooldown_period")
+	private LocalDateTime cooldownPeriod;
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
