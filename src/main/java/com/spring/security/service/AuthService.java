@@ -34,8 +34,10 @@ import com.spring.security.service.mapper.AuthServiceMapper;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.transaction.Transactional;
+import lombok.AllArgsConstructor;
 
 @Service
+@AllArgsConstructor
 public class AuthService {
 	private static final Logger logger = LoggerFactory.getLogger(AuthService.class);
 
@@ -46,17 +48,19 @@ public class AuthService {
 	private final JwtUtil jwtUtil;
 	private final RefreshTokenService refreshTokenService;
 
-	@Autowired
-	public AuthService(AuthenticationManager authenticationManager, UserRepository userRepository,
-			AuthServiceMapper authServiceMapper, PasswordEncoder encoder, JwtUtil jwtUtil,
-			RefreshTokenService refreshTokenService) {
-		this.authenticationManager = authenticationManager;
-		this.userRepository = userRepository;
-		this.authServiceMapper = authServiceMapper;
-		this.encoder = encoder;
-		this.jwtUtil = jwtUtil;
-		this.refreshTokenService = refreshTokenService;
-	}
+	// @Autowired
+	// public AuthService(AuthenticationManager authenticationManager,
+	// UserRepository userRepository,
+	// AuthServiceMapper authServiceMapper, PasswordEncoder encoder, JwtUtil
+	// jwtUtil,
+	// RefreshTokenService refreshTokenService) {
+	// this.authenticationManager = authenticationManager;
+	// this.userRepository = userRepository;
+	// this.authServiceMapper = authServiceMapper;
+	// this.encoder = encoder;
+	// this.jwtUtil = jwtUtil;
+	// this.refreshTokenService = refreshTokenService;
+	// }
 
 	public ResponseEntity<?> signup(SignupRequestDto signupRequestDto) {
 		if (userRepository.findByEmail(signupRequestDto.email()).isPresent()) {

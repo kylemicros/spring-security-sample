@@ -6,7 +6,7 @@ import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+// import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +16,11 @@ import com.spring.security.repository.UserRepository;
 import com.spring.security.service.exception.TokenRefreshException;
 
 import jakarta.transaction.Transactional;
+// import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @Service
+@RequiredArgsConstructor
 public class RefreshTokenService {
 	private static final Logger logger = LoggerFactory.getLogger(RefreshTokenService.class);
 
@@ -27,11 +30,12 @@ public class RefreshTokenService {
 	private final TokenRepository tokenRepository;
 	private final UserRepository userRepository;
 
-	@Autowired
-	public RefreshTokenService(TokenRepository tokenRepository, UserRepository userRepository) {
-		this.tokenRepository = tokenRepository;
-		this.userRepository = userRepository;
-	}
+	// @Autowired
+	// public RefreshTokenService(TokenRepository tokenRepository, UserRepository
+	// userRepository) {
+	// this.tokenRepository = tokenRepository;
+	// this.userRepository = userRepository;
+	// }
 
 	public Optional<Token> findByToken(String token) {
 		return tokenRepository.findByToken(token);

@@ -21,19 +21,21 @@ import com.spring.security.service.AuthService;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping(path = "/api/auth")
+@AllArgsConstructor
 public class AuthController {
 	private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
 
 	private final AuthService authService;
 
-	@Autowired
-	public AuthController(AuthService authService) {
-		this.authService = authService;
-	}
+	// @Autowired
+	// public AuthController(AuthService authService) {
+	// this.authService = authService;
+	// }
 
 	@PostMapping(path = "/signup", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> signup(@Valid @RequestBody SignupRequestDto signupRequestDto) {

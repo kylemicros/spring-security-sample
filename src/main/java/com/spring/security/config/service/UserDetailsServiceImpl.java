@@ -9,14 +9,17 @@ import org.springframework.stereotype.Service;
 import com.spring.security.model.User;
 import com.spring.security.repository.UserRepository;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {
 	private final UserRepository userRepository;
 
-	@Autowired
-	public UserDetailsServiceImpl(UserRepository userRepository) {
-		this.userRepository = userRepository;
-	}
+	// @Autowired
+	// public UserDetailsServiceImpl(UserRepository userRepository) {
+	// 	this.userRepository = userRepository;
+	// }
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

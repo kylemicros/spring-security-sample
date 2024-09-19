@@ -12,14 +12,17 @@ import com.spring.security.model.User;
 import com.spring.security.model.enums.Roles;
 import com.spring.security.repository.RoleRepository;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 public class AuthServiceMapper {
     private final RoleRepository roleRepository;
 
-    @Autowired
-    public AuthServiceMapper(RoleRepository roleRepository) {
-        this.roleRepository = roleRepository;
-    }
+    // @Autowired
+    // public AuthServiceMapper(RoleRepository roleRepository) {
+    // this.roleRepository = roleRepository;
+    // }
 
     public User mapSignupToUser(SignupRequestDto signupRequestDto) {
         User user = new User();

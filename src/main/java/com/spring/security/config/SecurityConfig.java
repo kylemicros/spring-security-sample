@@ -22,16 +22,21 @@ import org.springframework.security.web.header.writers.XXssProtectionHeaderWrite
 import com.spring.security.config.jwt.AuthEntryPointJwt;
 import com.spring.security.config.jwt.AuthTokenFilter;
 
+import lombok.AllArgsConstructor;
+
+// import static org.springframework.security.config.Customizer.withDefaults;
+
 @Configuration
 // @EnableWebSecurity
 @EnableMethodSecurity
+@AllArgsConstructor
 public class SecurityConfig {
 
-	@Autowired
-	private UserDetailsService userDetailsService;
+	// @Autowired
+	private final UserDetailsService userDetailsService;
 
-	@Autowired
-	private AuthEntryPointJwt entryPointJwt;
+	// @Autowired
+	private final AuthEntryPointJwt entryPointJwt;
 
 	@Bean
 	public AuthTokenFilter authTokenFilter() {
