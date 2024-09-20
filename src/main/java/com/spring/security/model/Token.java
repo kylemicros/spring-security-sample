@@ -4,6 +4,7 @@ import java.time.Instant;
 
 import com.spring.security.model.enums.TokenType;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -37,7 +38,7 @@ public class Token {
 	@Enumerated(EnumType.STRING)
 	private TokenType tokenType = TokenType.BEARER;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "user_id")
 	private User user;
 
