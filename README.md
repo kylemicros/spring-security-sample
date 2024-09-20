@@ -24,6 +24,7 @@ This is the final implementation of Spring Security + JSON Web Tokens (JWT) for 
 - [ ] OWASP Dependency-Check
 - [x] Vulnerability Prevention (e.g., XSS Attack Prevention)
 ### Misc.
+- [ ] History (Username/password changes logs)
 - [ ] Flyway (Version control for database schema)
 - [ ] Swagger (OpenAPI)
 - [ ] And More...
