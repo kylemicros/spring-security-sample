@@ -18,7 +18,7 @@ This is the final implementation of Spring Security + JSON Web Tokens (JWT) for 
 ### Security Task
 - [ ] HTTPS (SSL/TLS Certificate)
 - [ ] HashiCorp Vault (For secrets management)
-- [ ] Lease Privilege
+- [ ] Least Privilege
 - [x] Input Validation
 - [ ] Rate Limiting
 - [ ] OWASP Dependency-Check
