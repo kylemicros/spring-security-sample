@@ -15,6 +15,7 @@ This is the final implementation of Spring Security + JSON Web Tokens (JWT) for 
 - [ ] OAuth / Auth 2.0
 - [ ] Dockerize
 - [ ] K8s (Kubernetes)
+- [ ] History (Username/password changes logs)
 ### Security Task
 - [ ] HTTPS (SSL/TLS Certificate)
 - [ ] HashiCorp Vault (For secrets management)
@@ -24,7 +25,6 @@ This is the final implementation of Spring Security + JSON Web Tokens (JWT) for 
 - [ ] OWASP Dependency-Check
 - [x] Vulnerability Prevention (e.g., XSS Attack Prevention)
 ### Misc.
-- [ ] History (Username/password changes logs)
 - [ ] Flyway (Version control for database schema)
 - [ ] Swagger (OpenAPI)
 - [ ] And More...
